@@ -11,8 +11,11 @@ data<-read_csv(link)%>%
 data%>%
   ggplot(aes(x=epi_date, y=Avg, color=Cases))+
   geom_point()+
-  geom_line() +
   theme_classic()+
+  geom_col(aes(y=Cases, fill=Cases), alpha=0.5, color='grey90')+
+  geom_line() +
   scale_colour_met_c('Hiroshige', direction = -1)+
+  scale_fill_met_c('Hiroshige', direction = -1)+
   xlab('Date')+ylab('7-Day Average Cases in US')+
-  labs(color='Reported Daily\n Cases Number')
+  labs(color='Reported Daily\n Cases Number')+
+  guides(fill='none')
